@@ -22,7 +22,7 @@ class VistaRegistro(Resource):
             Usuario.usuario == request.json["usuario"]
         ).first()
         if usuario is None:
-            contrasena_encriptada = hashlib.md5(
+            contrasena_encriptada = hashlib.sha3_512(
                 request.json["contrasena"].encode("utf-8")
             ).hexdigest()
             nuevo_usuario = Usuario(
@@ -34,11 +34,11 @@ class VistaRegistro(Resource):
             db.session.commit()
             return {"mensaje": "usuario creado exitosamente", "id": nuevo_usuario.id}
         else:
-            return "El usuario ya existe", 404
+            return {"mensaje": "El usuario ya existe"}, 422
         
 class VistaAutenticacion(Resource):
     def post(self):
-        contrasena_encriptada = hashlib.md5(
+        contrasena_encriptada = hashlib.sha3_512(
             request.json["contrasena"].encode("utf-8")
         ).hexdigest()
         usuario = Usuario.query.filter(
@@ -47,7 +47,7 @@ class VistaAutenticacion(Resource):
         ).first()
         db.session.commit()
         if usuario is None:
-            return "El usuario no existe", 404
+            return {"mensaje": "El usuario no existe"}, 403
         else:
             token_de_acceso = create_access_token(identity=usuario.id)
             return {
@@ -65,9 +65,9 @@ class VistaAutorizacion(Resource):
         ).first()
 
         if usuario is None:
-            return "El usuario no existe", 404
+            return {"mensaje": "El usuario no existe"}, 401
         if usuario.rol != Rol.EMPRESA:
-            return "El usuario no tiene permisos", 401
+            return {"mensaje": "El usuario no tiene permisos"}, 401
 
-        return { "mensaje": get_jwt_identity()}
+        return {"mensaje": get_jwt_identity()}
         

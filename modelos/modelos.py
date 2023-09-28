@@ -13,7 +13,7 @@ class Rol(enum.Enum):
 class Usuario(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     usuario = db.Column(db.String(128))
-    contrasena = db.Column(db.String(50))
+    contrasena = db.Column(db.String(150))
     rol = db.Column(db.Enum(Rol))
 
 class UsuarioSchema(SQLAlchemyAutoSchema):
