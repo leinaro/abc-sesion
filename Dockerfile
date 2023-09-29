@@ -1,0 +1,13 @@
+FROM python:3.10-slim
+
+WORKDIR /app
+
+COPY . /app
+
+RUN pip install -r requirements.txt
+
+EXPOSE 5003
+
+ENV FLASK_APP=app.py
+
+CMD ["flask", "run", "--port", "5003", "--host=0.0.0.0"]
