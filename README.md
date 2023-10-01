@@ -3,7 +3,7 @@
 En este servicio se van a utilizar las tácticas de autenticación y autorización, utilizando los jwt tokens para este fin.​
 
 ## Como configurar el ambiente
-## clonar el repositorio de abc-jobs-gateway-seguridad
+# clonar el repositorio de abc-jobs-gateway-seguridad
         https://github.com/tom-uniandes/abc-jobs-gateway-seguridad
 
     abrir una consola de comandos en la carpeta y ubicarse en la que se descargó el repositorio de evaluacion
@@ -20,7 +20,7 @@ En este servicio se van a utilizar las tácticas de autenticación y autorizaci�
 ### En otra consola de comandos ejecutar el siguiente comando
         docker start gateway-seguridad
 
-## clonar el repositorio de abc-jobs-oferta
+# clonar el repositorio de abc-jobs-oferta
         https://github.com/leinaro/abc-jobs-oferta
 
 ### abrir una consola de comandos en la carpeta y ubicarse en la que se descargó el repositorio de abc-jobs-oferta
@@ -32,7 +32,7 @@ En este servicio se van a utilizar las tácticas de autenticación y autorizaci�
 ### En otra consola de comandos ejecutar el siguiente comando
         docker start oferta
 
-## clonar el repositorio de abc-sesion
+# clonar el repositorio de abc-sesion
         https://github.com/leinaro/abc-sesion
 
 ### abrir una consola de comandos en la carpeta y ubicarse en la que se descargó el repositorio de abc-sesion
